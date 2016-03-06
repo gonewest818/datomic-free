@@ -22,6 +22,9 @@ RUN mkdir /log
 RUN sed "s/# log-dir=log/log-dir=\/log/" -i transactor.properties
 VOLUME /log
 
+RUN sed 's#<!-- <logger name="datomic.kv-cluster" level="DEBUG"/> -->#<logger name="datomic.kv-cluster" level="WARN"/>#' -i bin/logback.xml
+RUN sed 's#<!-- <logger name="datomic.transaction" level="DEBUG"/> -->#<logger name="datomic.transaction" level="WARN"/>#' -i bin/logback.xml
+
 ADD start.sh ./
 RUN chmod +x start.sh
 
