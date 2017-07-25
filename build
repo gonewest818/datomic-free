@@ -3,7 +3,7 @@
 . datomic.env
 
 docker build --build-arg DATOMIC_VERSION=${DATOMIC_VERSION} \
-             -t datomic-free-base:${DATOMIC_VERSION} core/.
+             -t datomic-free-base:${DATOMIC_VERSION} base/.
 
 docker-compose build
 
