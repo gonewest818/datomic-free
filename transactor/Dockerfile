@@ -1,11 +1,8 @@
-FROM java:openjdk-7
+ARG DATOMIC_VERSION
+FROM datomic-free-base:${DATOMIC_VERSION}
 MAINTAINER Alexander Kiel <alexanderkiel@gmx.net>
 
-ENV DATOMIC_VERSION 0.9.5561.50
-
-ADD https://my.datomic.com/downloads/free/${DATOMIC_VERSION} /tmp/datomic.zip
-
-RUN unzip /tmp/datomic.zip && rm /tmp/datomic.zip
+ENV DATOMIC_VERSION=${DATOMIC_VERSION}
 
 WORKDIR datomic-free-${DATOMIC_VERSION}
 

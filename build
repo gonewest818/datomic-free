@@ -1,0 +1,9 @@
+#!/bin/bash -x
+
+. datomic.env
+
+docker build --build-arg DATOMIC_VERSION=${DATOMIC_VERSION} \
+             -t datomic-free-base:${DATOMIC_VERSION} core/.
+
+docker-compose build
+

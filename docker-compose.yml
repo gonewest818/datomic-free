@@ -1,0 +1,18 @@
+version: '2'
+services:
+  transactor:
+    build:
+      context: transactor/.
+      args:
+        - DATOMIC_VERSION
+    image: "datomic-free-transactor:${DATOMIC_VERSION}"
+  console:
+    build:
+      context: console/.
+      args:
+        - DATOMIC_VERSION
+        - DATOMIC_CONSOLE_VERSION
+    image: "datomic-free-console:${DATOMIC_VERSION}"
+    links:
+      - "transactor"
+
