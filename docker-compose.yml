@@ -6,6 +6,8 @@ services:
       args:
         - DATOMIC_VERSION
     image: "datomic-free-transactor:${DATOMIC_VERSION}"
+    ports:
+      - "4334-4336:4334-4336"
   console:
     build:
       context: console/.
@@ -13,6 +15,8 @@ services:
         - DATOMIC_VERSION
         - DATOMIC_CONSOLE_VERSION
     image: "datomic-free-console:${DATOMIC_VERSION}"
+    ports:
+      - "8080:8080"
     links:
       - "transactor"
 
